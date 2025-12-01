@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narratopia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #c8c0b0 0%, #d4cec0 100%);
+            font-family: 'Times New Roman', Times, serif;
+            color: #1a1a1a;
+            padding: 20px;
+        }
+
+        .newspaper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #e8e4d8;
+            border: 3px solid #2a2a2a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            background: #e8e4d8;
+            border-bottom: 4px solid #2a2a2a;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .crest {
+            position: absolute;
+            left: 30px;
+            top: 20px;
+            width: 70px;
+            height: 70px;
+        }
+
+        .title {
+            font-size: 72px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-style: italic;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            margin: 10px 0;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .info-bar {
+            border-top: 2px solid #2a2a2a;
+            border-bottom: 2px solid #2a2a2a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            background: #d4cec0;
+        }
+
+        .addcontent {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 1fr;
+
+            gap: 20px;
+            padding: 20px;
+        }
+        .altcontent{
+            display: grid;
+
+            grid-template-columns: 2fr 1fr;
+
+            gap: 20px;
+            padding: 20px;
+        }
+        .alt1content{
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 20px;
+            padding: 20px;
+        }
+        .alt2content{
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 1fr;
+
+            gap: 20px;
+            padding: 20px;
+        }
+        .content {
+            display: grid;
+            /* LAYOUT OPTIONS - Uncomment the one you want to use: */
+            
+            /* 2 columns: small left, big right */
+            grid-template-columns: 1fr 3fr;
+            
+            /* 2 columns: big left, small right */
+            /* grid-template-columns: 3fr 1fr; */
+            
+            /* 2 columns: equal width */
+            /* grid-template-columns: 1fr 1fr; */
+            
+            /* 3 columns: equal width */
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            
+            /* 3 columns: small, big, small (original) */
+            /* grid-template-columns: 1fr 2fr 1fr; */
+            
+            /* 3 columns: big in middle */
+            /* grid-template-columns: 1fr 3fr 1fr; */
+            
+            /* 4 columns: equal width */
+            /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+            
+            /* 4 columns: big first, then 3 small */
+            /* grid-template-columns: 2fr 1fr 1fr 1fr; */
+            
+            /* Single column (full width) */
+            /* grid-template-columns: 1fr; */
+            
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .column {
+            border-right: 2px solid #2a2a2a;
+            padding-right: 20px;
+        }
+
+        .column:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .exclusive-badge {
+            background: #2a2a2a;
+            color: #e8e4d8;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .main-headline {
+            font-size: 64px;
+            font-weight: bold;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .headline {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 15px 0 10px 0;
+            border-bottom: 2px solid #2a2a2a;
+            padding-bottom: 5px;
+        }
+
+        .subheadline {
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+
+        .article-text {
+            font-size: 13px;
+            line-height: 1.4;
+            text-align: justify;
+            margin-bottom: 15px;
+            column-count: 1;
+        }
+
+        .midimage {
+            width: 100%;
+            height: 100%;
+        }
+        .bigimage {
+            width: 100%;
+            height: 50%;
+        }
+
+        .small-image {
+            width: 100%;
+            height: 150px;
+            background: #2a2a2a;
+            border: 2px solid #2a2a2a;
+            margin: 10px 0;
+        }
+
+        .reward-box {
+            border: 3px solid #2a2a2a;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: #d4cec0;
+        }
+
+        .reward-amount {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .page-reference {
+            text-align: right;
+            font-size: 11px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .decorative-initial {
+            float: left;
+            font-size: 60px;
+            line-height: 50px;
+            padding-right: 8px;
+            font-weight: bold;
+        }
+
+        .footer-nav {
+            border-top: 3px solid #2a2a2a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            font-weight: bold;
+            background: #c8c0b0;
+        }
+        .logo {
+            width: 120px;     /* adjust size */
+            height: auto;
+            }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <!-- Header -->
+        <div class="header">
+        
+            <div class="crest">    
+                <img src="Logo Sombre.PNG" class="logo">
+            </div>
+            <div class="subtitle">Because Doctors don't only write prescriptions</div>
+            <div class="title">NARRATOPIA</div>
+        </div>
+
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="reward-box" style="display: inline-block; padding: 5px 10px; margin: 0;">
+                <span style="font-size: 20px; font-weight: bold;">500</span> GALLEONS<br>
+                <span style="font-size: 9px;">REWARD FOR ANY INFORMATION</span>
+            </div>
+            <div>
+                <strong>National Weather</strong><br>
+                Partly sunny - mostly a rain of tart
+            </div>
+            <div>
+                <strong>Zodiac ★ Aspects</strong><br>
+                ☉ by Y'MAG - HOG W47
+            </div>
+            <div>
+                <strong>FIRST-SECOND EDITION</strong><br>
+                TODAY ☉ is SCORPIO
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Left Column -->
+            <div class="column">
+                <p class="article-text">
+                    <span class="decorative-initial">A</span>
+                    well-trained doctor is, above all, a human being who needs to awaken their critical and artistic mind.
+                </p>
+            </div>
+
+            <!-- Center Column -->
+            <div class="column">
+                    <div class="main-headline">Narratopia</div>
+                    
+                    <img src="image1.png" class="bigimage">
+                
+                <div class="headline">Who are we?</div>
+                <p class="article-text">Narratopia was created in 2024 thanks to the efforts of a group of medical students driven by a passion for literary, artistic, and cultural creation.</p>
+                <p class="article-text">Our goal is to establish a platform that will allow young creators to make their voices heard, escape stress, and above all, exchange ideas and step out of their bubbles.</p>
+                
+
+            </div>
+        </div>
+
+        <div class="addcontent">
+            <div class="column">
+                <p class="article-text">
+                    <span class="decorative-initial">S</span>haring:
+                    Narratopia is a space for exchange where every contribution is welcomed with kindness.
+                </p>
+                
+            </div>
+            <div class="column">
+                <p class="article-text">
+                    <span class="decorative-initial">R</span>espect: 
+                    is the guiding principle of our club. We encourage all our members to respect the values of others and to show openness and tolerance toward the diversity of opinions.
+                </p>
+
+            </div>
+            <div class="column">
+                <p class="article-text">
+                    <span class="decorative-initial">C</span>reativity: 
+                    The fusion of Narration and Utopia is an invitation to go beyond the limits of the ordinary and to give free rein to inventiveness.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="altcontent">
+            <div class="column">
+                <div class="subheadline">Let's talk Litterature</div>
+                <p class="article-text">
+                    <span class="decorative-initial">O</span>pen Mic, Book Club, and various Workshops aim to enrich each participant's experience by providing them with the right tools to develop their talents. Regardless of the language of choice, Arabic or English, members will later be able to share their writings in front of a supportive audience, thus fostering exchange, feedback, and showcasing the work of each writer.
+                </p> 
+
+            </div>
+            <div class="column">
+                <img src="image2.png" class="midimage">
+
+            </div>
+        </div>
+
+        <div class="alt1content">
+            <div class="column">
+                <img src="image3.png" class="midimage">
+            </div>
+
+            <div class="column">
+                <div class="subheadline">And for Artists</div>
+                <p class="article-text">
+                    <span class="decorative-initial">N</span>arratopia is the perfect place for free artistic creation, honing artistic skills, and showcasing works.
+                    From cinema and photography to drawing and visual arts, our club offers everything aspiring artists are looking for.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="alt2content">
+            <div class="column">
+                <img src="image4.png" class="midimage">
+            </div>
+            <div class="column">
+                <div class="subheadline">So, what are you waiting for to join Narratopia?</div>
+            </div>
+            <div class="column">
+                <img src="image5.png" class="midimage">
+            </div>
+
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="footer-nav">
+            <div>limus 6</div>
+            <div>jobs 7</div>
+            <div>health 3</div>
+            <div>MINISTRY AFFAIRS 11</div>
+            <div>sports 16</div>
+        </div>
+    </div>
+</body>
+</html>
