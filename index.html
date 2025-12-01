@@ -26,6 +26,8 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
+/* ---------------- HEADER ---------------- */
+
 .header {
     background: #e8e4d8;
     border-bottom: 4px solid #2a2a2a;
@@ -40,6 +42,11 @@ body {
     top: 20px;
     width: 70px;
     height: 70px;
+}
+
+.logo {
+    width: 200%;
+    height: auto;
 }
 
 .title {
@@ -59,6 +66,8 @@ body {
     margin-bottom: 10px;
 }
 
+/* ---------------- INFO BAR ---------------- */
+
 .info-bar {
     border-top: 2px solid #2a2a2a;
     border-bottom: 2px solid #2a2a2a;
@@ -71,6 +80,8 @@ body {
     gap: 10px;
 }
 
+/* ---------------- GRID AREAS ---------------- */
+
 .addcontent,
 .altcontent,
 .alt1content,
@@ -81,19 +92,22 @@ body {
     padding: 20px;
 }
 
-/* Default grid desktop layouts */
 .content {
     grid-template-columns: 1fr 3fr;
 }
+
 .addcontent {
     grid-template-columns: repeat(3, 1fr);
 }
+
 .altcontent {
     grid-template-columns: 2fr 1fr;
 }
+
 .alt1content {
     grid-template-columns: 1fr 2fr;
 }
+
 .alt2content {
     grid-template-columns: repeat(3, 1fr);
 }
@@ -102,10 +116,13 @@ body {
     border-right: 2px solid #2a2a2a;
     padding-right: 20px;
 }
+
 .column:last-child {
     border-right: none;
     padding-right: 0;
 }
+
+/* ---------------- TYPOGRAPHY ---------------- */
 
 .main-headline {
     font-size: 64px;
@@ -136,37 +153,53 @@ body {
     text-align: justify;
     margin-bottom: 15px;
 }
-.logo {
-    height: auto;
-    width: 200%;
+
+.decorative-initial {
+    float: left;
+    font-size: 60px;
+    line-height: 50px;
+    padding-right: 8px;
+    font-weight: bold;
 }
+
+/* ---------------- IMAGES ---------------- */
 
 .midimage, .bigimage {
     width: 100%;
-    height: auto; /* FIX: images no longer break layout */
+    height: auto;
 }
 
-/* ------------------------- */
-/* 📱 MOBILE RESPONSIVENESS */
-/* ------------------------- */
+/* ---------------- FOOTER ---------------- */
 
-@media (max-width: 768px) {
-    .title {
-        font-size: 48px;
-        letter-spacing: 3px;
-    }
+.footer-nav {
+    border-top: 3px solid #2a2a2a;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    font-weight: bold;
+    background: #c8c0b0;
+}
 
-    .header {
-        padding: 30px 20px;
-    }
+/* ------------------------------------------------------- */
+/* 📱📱 RESPONSIVE FIX — KEEP NEWSPAPER STYLE ON MOBILE 📱📱 */
+/* ------------------------------------------------------- */
 
+@media (max-width: 850px) {
+
+    /* Keep the logo style — just move it above the title */
     .crest {
         position: static;
-        display: block;
         margin: 0 auto 10px;
+        text-align: center;
     }
 
-    /* Stack everything vertically on mobile */
+    .title {
+        font-size: 48px;
+        letter-spacing: 4px;
+    }
+
+    /* Convert all grids to 1-column */
     .content,
     .addcontent,
     .altcontent,
@@ -186,17 +219,20 @@ body {
         border-bottom: none;
     }
 
+    /* Info-bar becomes stacked but same aesthetics */
     .info-bar {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
 
     .main-headline {
-        font-size: 36px;
+        font-size: 42px;
     }
 }
 
 @media (max-width: 480px) {
+
     body {
         padding: 10px;
     }
@@ -206,9 +242,15 @@ body {
     }
 
     .main-headline {
-        font-size: 28px;
+        font-size: 30px;
+    }
+
+    .decorative-initial {
+        font-size: 48px;
+        line-height: 40px;
     }
 }
+
 
     </style>
 </head>
